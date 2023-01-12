@@ -5,5 +5,6 @@
 # 2. producer1
 # 3. producer2
 # Api
-https://min-api.cryptocompare.com/data/price /n
+https://min-api.cryptocompare.com/data/price
+
 https://api.coindesk.com/v1/bpi/currentprice.json
