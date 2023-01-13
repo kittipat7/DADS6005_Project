@@ -182,7 +182,70 @@ while True:
 c.close()
 ```
 # 2. producer1
+```
+%%capture
+!pip install confluent_kafka
+!pip install cryptocompare
+```
+```
+from confluent_kafka import Producer
+import requests
+import json
+import time
+
+# Set up the Kafka producer
+p = Producer({'bootstrap.servers': 'ec2-13-229-46-113.ap-southeast-1.compute.amazonaws.com:9092'})
+
+# Set the CryptoCompare API endpoint and any necessary headers or parameters
+api_endpoint = 'https://min-api.cryptocompare.com/data/price'
+params = {'fsym': 'ETH', 'tsyms': 'USD'}
+
+# Retrieve data from the CryptoCompare API in a loop
+while True:
+    # Make a request to the CryptoCompare API
+    response = requests.get(api_endpoint, params=params)
+    data = response.json()
+
+    # Convert the data to a string and produce it to Kafka
+    data_str = json.dumps(data)
+    print(data_str)
+    p.produce('eth1', data_str.encode('utf-8'))
+    p.flush()
+    time.sleep(60)
+```
 # 3. producer2
+```
+#coindesk
+%%capture
+!pip install confluent_kafka
+#!pip install -U coindesk
+```
+```
+from confluent_kafka import Producer
+import requests
+import json
+import time
+
+# Set up the Kafka producer
+p = Producer({'bootstrap.servers': 'ec2-13-229-46-113.ap-southeast-1.compute.amazonaws.com:9092'})
+
+# Set the CryptoCompare API endpoint and any necessary headers or parameters
+api_endpoint = "https://api.coindesk.com/v1/bpi/currentprice.json"
+
+# Retrieve data from the CryptoCompare API in a loop
+while True:
+    # Make a request to the CryptoCompare API
+    response = requests.get(api_endpoint)
+    data = response.json()
+
+    # Convert the data to a string and produce it to Kafka
+    data_str = json.dumps(data)
+    print(data_str)
+    p.produce('btc1', data_str.encode('utf-8'))
+    p.flush()
+    time.sleep(60)
+     
+```
 # Api
 https://min-api.cryptocompare.com/data/price
 
