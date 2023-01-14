@@ -1,9 +1,9 @@
 # DADS6005_Project
 # group member
 # design diagram
-![Uploading 6005_diagram.jpg…]()
+![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
 
-# 1. consumer![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
+# 1. consumer
 
 ```
 %%capture
