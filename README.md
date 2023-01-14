@@ -1,5 +1,11 @@
 # DADS6005_Project
 # group member
+6410412002 Mr. Kittipat Pattarajariya
+
+6410412004 Miss Chonthanya Yosbuth
+
+6410412010 Mr. Saran Ditjarern
+
 # Video Presentation
 https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=sharing
 
