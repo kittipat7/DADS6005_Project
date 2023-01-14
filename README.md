@@ -1,8 +1,10 @@
 # DADS6005_Project
 # group member
 # design diagram
-![6005_diagram](https://user-images.githubusercontent.com/97491541/212265399-5575315b-2413-4173-9a7c-499b25500656.jpg)
-# 1. consumer
+![Uploading 6005_diagram.jpg…]()
+
+# 1. consumer![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
+
 ```
 %%capture
 !pip install confluent_kafka
