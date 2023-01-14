@@ -1,3 +1,15 @@
+# Final group project of DADS6005
+Data Streaming and Realtime Analytics, วิทยาศาสตรมหาบัณฑิตสถิติประยุกต์ สถาบันบัณฑิตพัฒนบริหารศาสตร์
+
+
+
+
+
+
+
+
+
+
 # DADS6005_Project
 # group member
 6410412002 Mr. Kittipat Pattarajariya
