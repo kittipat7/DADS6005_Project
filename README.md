@@ -123,6 +123,7 @@ while True:
 
 - ดึงราคาเหรียญคริปโตฯ Ethereum และ Bitcoin จาก topic 1 และ topic 2 ทุกๆ 1 นาที และเก็บเป็น List เพื่อเปรียบเทียบ Variance และ Mean Square Error (MSE) ทุกๆ 1 นาที  
 > ใช้ Random Forest สำหรับการสร้าง Model Autoregressive forecasters จาก skforecast และเก็บเป็น List เพื่อนำมาสร้างเป็น Dataframe  
+
 > Rescale Dataframe ที่ได้หลังจากการสร้าง Model เนื่องจาก Model ที่สร้างเป็น Real-Time จึงจำเป็นต้อง Rescale หลังจากสร้าง Model เพื่อไม่ให้ส่งผลกระทบถึงค่า z-scroe ที่ได้ เพราะราคาจริงของเหรียญคริปโตฯ ระหว่าง Ethereum และ Bitcoin มีความแตกต่างกันสูง  
 - สร้างกราฟ Visualization ของ Variance และ Mean Square Error (MSE) เพื่อเปรียบเทียบว่ามีความสัมพันธ์ในทิศทางเดียวกันหรือไม่  
 > กราฟ Visualization ของ Variance และ Mean Square Error (MSE) จะเปลี่ยนแปลงทุกๆ 1 นาที  
