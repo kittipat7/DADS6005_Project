@@ -111,8 +111,8 @@ while True:
 ```
 
 `consumer`:  
-install confluent_kafka และ install skforecast สำหรับเตรียมนำราคาเหรียญคริปโตฯ Ethereum และ Bitcoin จาก topic 1 และ topic 2 เพื่อเปรียบเทียบ  
-install plotly และ install chart_studio สำหรับการสร้างกราฟ Visualization เพื่อเปรียบเทียบ  
+- install confluent_kafka และ install skforecast สำหรับเตรียมนำราคาเหรียญคริปโตฯ Ethereum และ Bitcoin จาก topic 1 และ topic 2 เพื่อเปรียบเทียบ  
+- install plotly และ install chart_studio สำหรับการสร้างกราฟ Visualization เพื่อเปรียบเทียบ  
 ```python
 %%capture
 !pip install confluent_kafka
@@ -312,7 +312,7 @@ c.close()
 ตัวอย่างของผลลัพธ์จาก `consumer` และ `กราฟ  Visualization` ใน 1 นาที
 ![image](https://user-images.githubusercontent.com/97492504/212519889-9d6d3253-ab2e-4080-a56d-c2b9d7921edd.png)
 
-สรุปจากผลลัพธ์ที่ได้รับจากการเก็บข้อมูล 100 ตัว
+##### สรุปจากผลลัพธ์ที่ได้รับจากการเก็บข้อมูล 100 ตัว   
 กราฟ  Visualization ของ Variance ให้ค่า error แตกต่างกันมาก แต่  
 กราฟ  Visualization ของ Mean Square Error (MSE) ให้ค่า error คล้ายคลึงกัน  
 ซึ่งจะเห็นว่า Variance และ Mean Square Error (MSE) ไม่มีความสัมพันธ์กัน ซึ่งผลลัพธ์จากการเก็บข้อมูล 100 ตัวไม่สอดคล้องกับที่ควรจะเป็นแม้จะทำการ Rescale แล้วก็ตาม เนื่องจากราคาจริงของ Bitcoin สูงกว่า 
