@@ -43,7 +43,8 @@ install confluent_kafka และ install cryptocompare สำหรับกา
 !pip install cryptocompare
 ```
 
-ส่งราคาเหรียญคริปโตฯ Ethereum CryptoCompare API ไป topic 1 ทุกๆ 1 นาที  
+- ส่งราคาเหรียญคริปโตฯ Ethereum CryptoCompare API ไป topic 1 ทุกๆ 1 นาที  
+- API: https://min-api.cryptocompare.com/data/price  
 ```python
 from confluent_kafka import Producer
 import requests
@@ -80,7 +81,8 @@ install confluent_kafka และ install coindesk สำหรับการ�
 #!pip install -U coindesk
 ```
 
-ส่งราคาเหรียญคริปโตฯ Bitcoin CoinDesk API ไป topic 2 ทุกๆ 1 นาที  
+- ส่งราคาเหรียญคริปโตฯ Bitcoin CoinDesk API ไป topic 2 ทุกๆ 1 นาที  
+- https://api.coindesk.com/v1/bpi/currentprice.json  
 ```python
 from confluent_kafka import Producer
 import requests
@@ -120,8 +122,10 @@ install plotly และ install chart_studio สำหรับการสร�
 ```
 
 - ดึงราคาเหรียญคริปโตฯ Ethereum และ Bitcoin จาก topic 1 และ topic 2 ทุกๆ 1 นาที และเก็บเป็น List เพื่อเปรียบเทียบ Variance และ Mean Square Error (MSE) ทุกๆ 1 นาที  
-> ใช้ Random Forest สำหรับการสร้าง Model Autoregressive forecasters จาก skforecast 
-- สร้างกราฟ Visualization ของ Variance และ Mean Square Error (MSE) เพื่อเปรียบเทียบว่ามีความสัมพันธ์ในทิศทางเดียวกันหรือไม่
+> ใช้ Random Forest สำหรับการสร้าง Model Autoregressive forecasters จาก skforecast และเก็บเป็น List เพื่อนำมาสร้างเป็น Dataframe
+> Rescale Dataframe ที่ได้หลังจากการสร้าง Model เนื่องจาก Model ที่สร้างเป็น Real-Time จึงจำเป็นต้อง Rescale หลังจากสร้าง Model เพื่อไม่ให้ส่งผลกระทบถึงค่า z-scroe ที่ได้ เพราะราคาจริงของเหรียญคริปโตฯ ระหว่าง Ethereum และ Bitcoin มีความแตกต่างกันสูง  
+- สร้างกราฟ Visualization ของ Variance และ Mean Square Error (MSE) เพื่อเปรียบเทียบว่ามีความสัมพันธ์ในทิศทางเดียวกันหรือไม่  
+> กราฟ Visualization ของ Variance และ Mean Square Error (MSE) จะเปลี่ยนแปลงทุกๆ 1 นาที  
   
 <details>
 <summary>Detail coding consumer</summary>
@@ -301,24 +305,23 @@ c.close()
 
 
 ## Conclusion
-ผลลัพธ์จาก `Producer 1`
+ตัวอย่างของผลลัพธ์จาก `Producer 1` ใน 1 นาที
 ![image](https://user-images.githubusercontent.com/97492504/212519860-fbbc7ea4-b553-4229-b910-9783abb793a6.png)  
-ผลลัพธ์จาก `Producer 2`
+ตัวอย่างของผลลัพธ์จาก `Producer 2` ใน 1 นาที
 ![image](https://user-images.githubusercontent.com/97492504/212519870-620dc57f-0c73-49a6-8afd-2779fa47d258.png)  
-ผลลัพธ์จาก `consumer` และ `กราฟ  Visualization`
+ตัวอย่างของผลลัพธ์จาก `consumer` และ `กราฟ  Visualization` ใน 1 นาที
 ![image](https://user-images.githubusercontent.com/97492504/212519889-9d6d3253-ab2e-4080-a56d-c2b9d7921edd.png)
 
-ref  
-https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html
-https://pypi.org/project/cryptocompare/
-https://pypi.org/project/coindesk/
+สรุปจากผลลัพธ์ที่ได้รับจากการเก็บข้อมูล 100 ตัว
+กราฟ  Visualization ของ Variance ให้ค่า error แตกต่างกันมาก แต่  
+กราฟ  Visualization ของ Mean Square Error (MSE) ให้ค่า error คล้ายคลึงกัน  
+ซึ่งจะเห็นว่า Variance และ Mean Square Error (MSE) ไม่มีความสัมพันธ์กัน ซึ่งผลลัพธ์จากการเก็บข้อมูล 100 ตัวไม่สอดคล้องกับที่ควรจะเป็นแม้จะทำการ Rescale แล้วก็ตาม เนื่องจากราคาจริงของ Bitcoin สูงกว่า 
+Ethereum อย่างมาก ทำให้โอกาสในการขึ้น-ลง ของ Bitcoin สูงกว่า Ethereum 
 
 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/97492504/196757909-82128152-46e5-468e-829f-0052efdabeef.png">
 
 
-
-# Api
-https://min-api.cryptocompare.com/data/price
-
-https://api.coindesk.com/v1/bpi/currentprice.json
+##### Reference  
+https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html  
+https://pypi.org/project/cryptocompare/  
+https://pypi.org/project/coindesk/  
