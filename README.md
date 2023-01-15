@@ -123,7 +123,9 @@ install plotly และ install chart_studio สำหรับการสร�
 > ใช้ Random Forest สำหรับการสร้าง Model Autoregressive forecasters จาก skforecast 
 - สร้างกราฟ Visualization ของ Variance และ Mean Square Error (MSE) เพื่อเปรียบเทียบว่ามีความสัมพันธ์ในทิศทางเดียวกันหรือไม่
   
-<detail> Detail coding consumer
+<details>
+<summary>Detail coding consumer</summary>
+
 ```python
 from confluent_kafka import Consumer, KafkaError
 import json
@@ -295,7 +297,7 @@ while True:
 
 c.close()
 ```
-<\detail>
+<\details>
 
 ref  
 https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html
