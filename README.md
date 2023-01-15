@@ -298,6 +298,14 @@ while True:
 c.close()
 ```
 <\details>
+    
+## Conclusion
+ผลลัพธ์จาก `Producer 1`
+![image](https://user-images.githubusercontent.com/97492504/212519860-fbbc7ea4-b553-4229-b910-9783abb793a6.png)  
+ผลลัพธ์จาก `Producer 2`
+![image](https://user-images.githubusercontent.com/97492504/212519870-620dc57f-0c73-49a6-8afd-2779fa47d258.png)  
+ผลลัพธ์จาก `consumer` และ `กราฟ  Visualization`
+![image](https://user-images.githubusercontent.com/97492504/212519889-9d6d3253-ab2e-4080-a56d-c2b9d7921edd.png)
 
 ref  
 https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html
