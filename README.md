@@ -43,7 +43,7 @@ install confluent_kafka และ install cryptocompare สำหรับกา
 !pip install cryptocompare
 ```
 
-ส่งราคาเหรียญคริปโตฯ Ethereum CryptoCompare API ไป topic 1  
+ส่งราคาเหรียญคริปโตฯ Ethereum CryptoCompare API ไป topic 1 ทุกๆ 1 นาที  
 ```python
 from confluent_kafka import Producer
 import requests
@@ -80,7 +80,7 @@ install confluent_kafka และ install coindesk สำหรับการ�
 #!pip install -U coindesk
 ```
 
-ส่งราคาเหรียญคริปโตฯ Bitcoin CoinDesk API ไป topic 2 
+ส่งราคาเหรียญคริปโตฯ Bitcoin CoinDesk API ไป topic 2 ทุกๆ 1 นาที  
 ```python
 from confluent_kafka import Producer
 import requests
@@ -108,30 +108,23 @@ while True:
      
 ```
 
-
-ref  
-https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html
-https://pypi.org/project/cryptocompare/
-https://pypi.org/project/coindesk/
-
-
-
-
-
-# 1. consumer
-
-
-
-
-
-```
+`consumer`:  
+install confluent_kafka และ install skforecast สำหรับเตรียมนำราคาเหรียญคริปโตฯ Ethereum และ Bitcoin จาก topic 1 และ topic 2 เพื่อเปรียบเทียบ  
+install plotly และ install chart_studio สำหรับการสร้างกราฟ Visualization เพื่อเปรียบเทียบ  
+```python
 %%capture
 !pip install confluent_kafka
 !pip install plotly
 !pip install chart_studio
 !pip install skforecast
 ```
-```
+
+- ดึงราคาเหรียญคริปโตฯ Ethereum และ Bitcoin จาก topic 1 และ topic 2 ทุกๆ 1 นาที และเก็บเป็น List เพื่อเปรียบเทียบ Variance และ Mean Square Error (MSE) ทุกๆ 1 นาที  
+> ใช้ Random Forest สำหรับการสร้าง Model Autoregressive forecasters จาก skforecast 
+- สร้างกราฟ Visualization ของ Variance และ Mean Square Error (MSE) เพื่อเปรียบเทียบว่ามีความสัมพันธ์ในทิศทางเดียวกันหรือไม่
+  
+<detail> Detail coding consumer
+```python
 from confluent_kafka import Consumer, KafkaError
 import json
 import time
@@ -302,71 +295,18 @@ while True:
 
 c.close()
 ```
-# 2. producer1
-```
-%%capture
-!pip install confluent_kafka
-!pip install cryptocompare
-```
-```
-from confluent_kafka import Producer
-import requests
-import json
-import time
+<\detail>
 
-# Set up the Kafka producer
-p = Producer({'bootstrap.servers': 'ec2-13-229-46-113.ap-southeast-1.compute.amazonaws.com:9092'})
+ref  
+https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html
+https://pypi.org/project/cryptocompare/
+https://pypi.org/project/coindesk/
 
-# Set the CryptoCompare API endpoint and any necessary headers or parameters
-api_endpoint = 'https://min-api.cryptocompare.com/data/price'
-params = {'fsym': 'ETH', 'tsyms': 'USD'}
 
-# Retrieve data from the CryptoCompare API in a loop
-while True:
-    # Make a request to the CryptoCompare API
-    response = requests.get(api_endpoint, params=params)
-    data = response.json()
 
-    # Convert the data to a string and produce it to Kafka
-    data_str = json.dumps(data)
-    print(data_str)
-    p.produce('eth1', data_str.encode('utf-8'))
-    p.flush()
-    time.sleep(60)
-```
-# 3. producer2
-```
-#coindesk
-%%capture
-!pip install confluent_kafka
-#!pip install -U coindesk
-```
-```
-from confluent_kafka import Producer
-import requests
-import json
-import time
 
-# Set up the Kafka producer
-p = Producer({'bootstrap.servers': 'ec2-13-229-46-113.ap-southeast-1.compute.amazonaws.com:9092'})
 
-# Set the CryptoCompare API endpoint and any necessary headers or parameters
-api_endpoint = "https://api.coindesk.com/v1/bpi/currentprice.json"
 
-# Retrieve data from the CryptoCompare API in a loop
-while True:
-    # Make a request to the CryptoCompare API
-    response = requests.get(api_endpoint)
-    data = response.json()
-
-    # Convert the data to a string and produce it to Kafka
-    data_str = json.dumps(data)
-    print(data_str)
-    p.produce('btc1', data_str.encode('utf-8'))
-    p.flush()
-    time.sleep(60)
-     
-```
 # Api
 https://min-api.cryptocompare.com/data/price
 
