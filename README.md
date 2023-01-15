@@ -31,7 +31,7 @@ https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=shari
 
 #### 3. เปรียบเทียบ Variance และ Mean Square Error (MSE) ของเหรียญคริปโตฯ
 - `เปรียบเทียบ Variance` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum และ Bitcoin  
-- `เปรียบเทียบ Mean Square Error (MSE)` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum  
+- `เปรียบเทียบ Mean Square Error (MSE)` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum และ Bitcoin  
 
 ### Coding  
 
