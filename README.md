@@ -297,8 +297,10 @@ while True:
 
 c.close()
 ```
+
 <\details>
-    
+
+
 ## Conclusion
 ผลลัพธ์จาก `Producer 1`
 ![image](https://user-images.githubusercontent.com/97492504/212519860-fbbc7ea4-b553-4229-b910-9783abb793a6.png)  
