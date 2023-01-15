@@ -304,7 +304,7 @@ c.close()
 </details>
 
 
-## Conclusion
+## สรุปผลลัพธ์
 ตัวอย่างของผลลัพธ์จาก `Producer 1` ใน 1 นาที
 ![image](https://user-images.githubusercontent.com/97492504/212519860-fbbc7ea4-b553-4229-b910-9783abb793a6.png)  
 ตัวอย่างของผลลัพธ์จาก `Producer 2` ใน 1 นาที
