@@ -297,8 +297,7 @@ while True:
 
 c.close()
 ```
-
-<\details>
+</details>
 
 
 ## Conclusion
@@ -315,7 +314,7 @@ https://pypi.org/project/cryptocompare/
 https://pypi.org/project/coindesk/
 
 
-
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/97492504/196757909-82128152-46e5-468e-829f-0052efdabeef.png">
 
 
 
