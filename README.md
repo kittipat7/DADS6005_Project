@@ -11,7 +11,6 @@ Data Streaming and Realtime Analytics, วิทยาศาสตรมหา�
 โดยใช้ Libary skforecast จาก scikit-learn ในการสร้าง Model เพื่อเปรียบเทียบ
 
 ##### Libary skforecast จาก scikit-learn  
-- - -  
 ![image](https://user-images.githubusercontent.com/97492504/212503469-37995f25-9c68-44fb-82e7-4f6dcd53e7a0.png)  
 สร้าง Model สำหรับการเปรียบเทียบ ซึ่ง Libary skforecast จาก scikit-learn จะสร้าง autoregressive forecasters ซึ่งจะเปลี่ยน forecasters จาก scikit-learn เป็น multi-step forcasters ซึ่ง autoregressive forecasters ที่ใช้คือ Random Forest
 
