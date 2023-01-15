@@ -7,12 +7,13 @@ Data Streaming and Realtime Analytics, วิทยาศาสตรมหา�
 6410412010 ศรัณย์ ดิษเจริญ  
 
 ## วัตถุประสงค์
-เปรียบเทียบ Variance และ Mean Square Error (MSE) ของเหรียญคริปโตฯ ระหว่าง Bitcoin และ Ethereum  
+เปรียบเทียบ Variance และ Mean Square Error (MSE) ของเหรียญคริปโตฯ ระหว่าง Ethereum และ Bitcoin  
+เพื่อเปรียบเทียบ Variance และ Mean Square Error (MSE) มีความสัมพันธ์ในทิศทางเดียวกันหรือไม่
 โดยใช้ Libary skforecast จาก scikit-learn ในการสร้าง Model เพื่อเปรียบเทียบ
 
 ##### Libary skforecast จาก scikit-learn  
 ![image](https://user-images.githubusercontent.com/97492504/212503469-37995f25-9c68-44fb-82e7-4f6dcd53e7a0.png)  
-สร้าง Model สำหรับการเปรียบเทียบ ซึ่ง Libary skforecast จาก scikit-learn จะสร้าง autoregressive forecasters ซึ่งจะเปลี่ยน forecasters จาก scikit-learn เป็น multi-step forcasters ซึ่ง autoregressive forecasters ที่ใช้คือ Random Forest
+สร้าง Model สำหรับการเปรียบเทียบ ซึ่ง Libary skforecast จาก scikit-learn จะสร้าง autoregressive forecasters ซึ่ง autoregressive forecasters ที่ใช้คือ Random Forest
 
 ### Video Presentation  
 https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=sharing  
@@ -20,10 +21,24 @@ https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=shari
 ### Process Flow Diagram  
 ![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
 
+#### 1. Producer: ส่งราคาเหรียญคริปโตฯ Ethereum และ Bitcoin ไป topic
+- `Producer 1` ส่งราคาเหรียญคริปโตฯ Ethereum CryptoCompare API ไป topic 1
+- `Producer 2` ส่งราคาเหรียญคริปโตฯ Bitcoin CoinDesk API ไป topic 2
+
+##### 2. Consumer: ดึงราคาเหรียญคริปโตฯ จาก topic 1 และ topic 2
+- `Consumer 1` ดึงราคาเหรียญคริปโตฯ Ethereum จาก topic 1
+- `Consumer 2` ดึงราคาเหรียญคริปโตฯ Bitcoin จาก topic 2
+
+#### 3. เปรียบเทียบ Variance และ Mean Square Error (MSE) ของเหรียญคริปโตฯ
+- `เปรียบเทียบ Variance` ระหว่าง Ethereum และ Bitcoin และสร้างกราฟ Visualization
+- `เปรียบเทียบ Mean Square Error (MSE)` ระหว่าง Ethereum และ Bitcoin และสร้างกราฟ Visualization
+
 
 
 ref  
 https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html
+https://pypi.org/project/cryptocompare/
+https://pypi.org/project/coindesk/
 
 
 
