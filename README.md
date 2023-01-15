@@ -30,8 +30,8 @@ https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=shari
 - `Consumer 2` ดึงราคาเหรียญคริปโตฯ Bitcoin จาก topic 2
 
 #### 3. เปรียบเทียบ Variance และ Mean Square Error (MSE) ของเหรียญคริปโตฯ
-- `เปรียบเทียบ Variance` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum และ Bitcoin และ`สร้างกราฟ Visualization`
-- `เปรียบเทียบ Mean Square Error (MSE)` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum และ Bitcoin และ`สร้างกราฟ Visualization`
+- `เปรียบเทียบ Variance` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum และ Bitcoin  
+- `เปรียบเทียบ Mean Square Error (MSE)` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum  
 
 ### Coding  
 
