@@ -14,6 +14,11 @@ Data Streaming and Realtime Analytics, วิทยาศาสตรมหา�
 ![image](https://user-images.githubusercontent.com/97492504/212503469-37995f25-9c68-44fb-82e7-4f6dcd53e7a0.png)  
 สร้าง Model สำหรับการเปรียบเทียบ ซึ่ง Libary skforecast จาก scikit-learn จะสร้าง autoregressive forecasters ซึ่งจะเปลี่ยน forecasters จาก scikit-learn เป็น multi-step forcasters ซึ่ง autoregressive forecasters ที่ใช้คือ Random Forest
 
+### Video Presentation  
+https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=sharing  
+
+### Process Flow Diagram  
+![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
 
 
 
@@ -21,16 +26,6 @@ ref
 https://joaquinamatrodrigo.github.io/skforecast/0.4.3/index.html
 
 
-# DADS6005_Project
-# group member
-6410412002 Mr. Kittipat Pattarajariya
-
-6410412004 Miss Chonthanya Yosbuth
-
-6410412010 Mr. Saran Ditjarern
-
-# Video Presentation
-https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=sharing
 
 # design diagram
 ![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
