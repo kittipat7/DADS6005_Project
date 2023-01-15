@@ -30,9 +30,83 @@ https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=shari
 - `Consumer 2` ดึงราคาเหรียญคริปโตฯ Bitcoin จาก topic 2
 
 #### 3. เปรียบเทียบ Variance และ Mean Square Error (MSE) ของเหรียญคริปโตฯ
-- `เปรียบเทียบ Variance` ระหว่าง Ethereum และ Bitcoin และสร้างกราฟ Visualization
-- `เปรียบเทียบ Mean Square Error (MSE)` ระหว่าง Ethereum และ Bitcoin และสร้างกราฟ Visualization
+- `เปรียบเทียบ Variance` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum และ Bitcoin และ`สร้างกราฟ Visualization`
+- `เปรียบเทียบ Mean Square Error (MSE)` และ `สร้างกราฟ Visualization` ระหว่าง Ethereum และ Bitcoin และ`สร้างกราฟ Visualization`
 
+### Coding  
+
+`Producer 1`:  
+install confluent_kafka และ install cryptocompare สำหรับการส่งราคาเหรียญคริปโตฯ Ethereum CryptoCompare  
+```python
+%%capture
+!pip install confluent_kafka
+!pip install cryptocompare
+```
+
+ส่งราคาเหรียญคริปโตฯ Ethereum CryptoCompare API ไป topic 1  
+```python
+from confluent_kafka import Producer
+import requests
+import json
+import time
+
+# Set up the Kafka producer
+p = Producer({'bootstrap.servers': 'ec2-13-229-46-113.ap-southeast-1.compute.amazonaws.com:9092'})
+
+# Set the CryptoCompare API endpoint and any necessary headers or parameters
+api_endpoint = 'https://min-api.cryptocompare.com/data/price'
+params = {'fsym': 'ETH', 'tsyms': 'USD'}
+
+# Retrieve data from the CryptoCompare API in a loop
+while True:
+    # Make a request to the CryptoCompare API
+    response = requests.get(api_endpoint, params=params)
+    data = response.json()
+
+    # Convert the data to a string and produce it to Kafka
+    data_str = json.dumps(data)
+    print(data_str)
+    p.produce('eth1', data_str.encode('utf-8'))
+    p.flush()
+    time.sleep(60)
+```
+
+`Producer 2`:  
+install confluent_kafka และ install coindesk สำหรับการส่งราคาเหรียญคริปโตฯ Bitcoin CoinDesk 
+```python
+#coindesk
+%%capture
+!pip install confluent_kafka
+#!pip install -U coindesk
+```
+
+ส่งราคาเหรียญคริปโตฯ Bitcoin CoinDesk API ไป topic 2 
+```python
+from confluent_kafka import Producer
+import requests
+import json
+import time
+
+# Set up the Kafka producer
+p = Producer({'bootstrap.servers': 'ec2-13-229-46-113.ap-southeast-1.compute.amazonaws.com:9092'})
+
+# Set the CryptoCompare API endpoint and any necessary headers or parameters
+api_endpoint = "https://api.coindesk.com/v1/bpi/currentprice.json"
+
+# Retrieve data from the CryptoCompare API in a loop
+while True:
+    # Make a request to the CryptoCompare API
+    response = requests.get(api_endpoint)
+    data = response.json()
+
+    # Convert the data to a string and produce it to Kafka
+    data_str = json.dumps(data)
+    print(data_str)
+    p.produce('btc1', data_str.encode('utf-8'))
+    p.flush()
+    time.sleep(60)
+     
+```
 
 
 ref  
@@ -42,10 +116,13 @@ https://pypi.org/project/coindesk/
 
 
 
-# design diagram
-![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
+
 
 # 1. consumer
+
+
+
+
 
 ```
 %%capture
