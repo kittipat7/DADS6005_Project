@@ -15,8 +15,6 @@ Data Streaming and Realtime Analytics, วิทยาศาสตรมหา�
 ![image](https://user-images.githubusercontent.com/97492504/212503469-37995f25-9c68-44fb-82e7-4f6dcd53e7a0.png)  
 สร้าง Model สำหรับการเปรียบเทียบ ซึ่ง Libary skforecast จะเปลี่ยนแปลง scikit-learn regressors กลายเป็น multi-step forecasters เพื่อง่ายต่อการสร้าง Model Real-Time โดยมี forecaster auto regression ที่เลือกมาใช้ก็คือ Random Rorest  
 
-### Video Presentation  
-https://drive.google.com/file/d/14l7nSjE6jKbPkD3AJ1FIjlsiqqd2iKq2/view?usp=sharing  
 
 ### Process Flow Diagram  
 ![6005_diagram](https://user-images.githubusercontent.com/97491541/212450021-c0d95cd5-5574-463a-b621-b43be64995f4.jpg)
